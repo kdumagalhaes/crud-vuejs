@@ -35,6 +35,7 @@
             backgroundColor="#ff0000"
             height="50px"
             maxWidth="85px"
+            @click="deleteAuthor(author.id)"
           />
         </td>
       </tr>
@@ -45,6 +46,7 @@
 <script>
 // components
 import Button from "./Button.vue";
+
 export default {
   name: "Table",
   data() {
@@ -60,9 +62,17 @@ export default {
       try {
         const response = await fetch("http://localhost:8000/api/authors");
         this.authors = await response.json();
-        this.showTable = true;
       } catch (error) {
         console.error(error);
+      }
+    },
+    deleteAuthor(id) {
+      try {
+        fetch(`http://localhost:8000/api/authors/${id}`, {
+          method: "DELETE",
+        });
+      } catch (error) {
+        console.log(error);
       }
     },
   },
