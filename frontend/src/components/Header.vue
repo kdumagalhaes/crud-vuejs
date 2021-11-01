@@ -24,13 +24,13 @@ export default {
 <style lang="scss" scoped>
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 20px 80px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .logo {
-  color: $blue-gray;
+  color: $dark-gray;
 }
 </style>

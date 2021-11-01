@@ -1,43 +1,45 @@
 <template>
-  <table class="table">
-    <tr>
-      <th>Nome</th>
-      <th>Email</th>
-      <th>GitHub</th>
-      <th>Twitter</th>
-      <th>Localização</th>
-      <th>Último artigo</th>
-      <th>Ações</th>
-    </tr>
-    <tr v-for="author in authors" :key="author.id">
-      <td contenteditable="true">{{ author.name }}</td>
-      <td contenteditable="true">{{ author.email }}</td>
-      <td contenteditable="true">{{ author.github }}</td>
-      <td contenteditable="true">
-        {{ author.twitter }}
-      </td>
-      <td contenteditable="true">
-        {{ author.location }}
-      </td>
-      <td contenteditable="true">
-        {{ author.latest_article_published }}
-      </td>
-      <td class="action-column">
-        <Button
-          text="Editar"
-          backgroundColor="#b8a200"
-          height="50px"
-          maxWidth="85px"
-        />
-        <Button
-          text="Apagar"
-          backgroundColor="#ff0000"
-          height="50px"
-          maxWidth="85px"
-        />
-      </td>
-    </tr>
-  </table>
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>GitHub</th>
+        <th>Twitter</th>
+        <th>Localização</th>
+        <th>Último artigo</th>
+        <th>Ações</th>
+      </tr>
+      <tr v-for="author in authors" :key="author.id">
+        <td contenteditable="true">{{ author.name }}</td>
+        <td contenteditable="true">{{ author.email }}</td>
+        <td contenteditable="true">{{ author.github }}</td>
+        <td contenteditable="true">
+          {{ author.twitter }}
+        </td>
+        <td contenteditable="true">
+          {{ author.location }}
+        </td>
+        <td contenteditable="true">
+          {{ author.latest_article_published }}
+        </td>
+        <td class="action-column">
+          <Button
+            text="Editar"
+            backgroundColor="#b8a200"
+            height="50px"
+            maxWidth="85px"
+          />
+          <Button
+            text="Apagar"
+            backgroundColor="#ff0000"
+            height="50px"
+            maxWidth="85px"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -71,11 +73,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+    padding: 0 80px;
+}
+
 .table {
   border-collapse: collapse;
   width: 100%;
-  max-width: 1200px;
-  margin: 50px auto;
+  margin-top: 50px;
   font-size: 0.85rem;
   text-align: center;
 }
@@ -88,9 +93,9 @@ th {
 }
 
 td {
-    &:first-child {
-        padding-left: 10px;
-    }
+  &:first-child {
+    padding-left: 10px;
+  }
 }
 
 tr:nth-child(even) {
