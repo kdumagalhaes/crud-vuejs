@@ -45,7 +45,6 @@ export default {
   color: $light-gray;
   font-size: 1.2rem;
   background-color: var(--backgroundColor);
-  cursor: pointer;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: all 0.4s;
 
