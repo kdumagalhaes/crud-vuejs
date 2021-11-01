@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showButton" class="modal">
+  <div v-if="isModal" class="modal">
     <button @click="closeModal" class="close">X</button>
   </div>
 </template>
@@ -7,16 +7,16 @@
 <script>
 export default {
   name: "Modal",
-  data() {
-    return {
-      showButton: true,
-    };
-  },
   methods: {
     closeModal() {
-      this.showButton = false;
+      this.$store.dispatch('closeModal')
     },
   },
+  computed: {
+    isModal() {
+      return this.$store.state.isModal
+    }
+  }
 };
 </script>
 

@@ -6,6 +6,7 @@
       backgroundColor="#6699cc"
       height="50px"
       maxWidth="200px"
+      @click="showModal"
     />
   </header>
 </template>
@@ -18,6 +19,11 @@ export default {
   components: {
     Button,
   },
+  methods: {
+    showModal() {
+      this.$store.dispatch('showModal')
+    }
+  }
 };
 </script>
 
