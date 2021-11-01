@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+}
+
+input,
+button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body,
+textarea {
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+body {
+    background-color: $light-gray;
+}
+
+button {
+    cursor: pointer;
+}
