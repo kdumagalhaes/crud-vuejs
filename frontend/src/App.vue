@@ -1,14 +1,15 @@
 <template>
-  <Button text="Teste" backgroundColor="#ff0000" height="50px" maxWidth="400px" />
+  <Header />
 </template>
 
 <script>
 // components
-import Button from "./components/Button.vue";
+import Header from "./components/Header.vue";
+
 export default {
   name: "App",
   components: {
-    Button,
+    Header,
   },
 };
 </script>
