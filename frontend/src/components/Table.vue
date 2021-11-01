@@ -22,7 +22,6 @@
         {{ author.latest_article_published }}
       </td>
     </tr>
-    <button @click="listAllAuthors">listar</button>
   </table>
 </template>
 
@@ -45,7 +44,30 @@ export default {
       }
     },
   },
+  created() {
+    this.listAllAuthors();
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+td,
+th {
+  border-top: 1px solid $primary-gray;
+  text-align: left;
+  padding: 20px 10px;
+}
+
+tr:nth-child(even) {
+  background-color: $primary-gray;
+}
+</style>
