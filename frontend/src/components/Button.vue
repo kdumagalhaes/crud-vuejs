@@ -49,8 +49,8 @@ export default {
   transition: all 0.4s;
 
   &:hover {
-      box-shadow: none;
-      transform: scale(0.99);
+    box-shadow: none;
+    transform: scale(0.99);
   }
 }
 </style>
