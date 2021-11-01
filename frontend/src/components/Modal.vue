@@ -1,69 +1,74 @@
 <template>
-  <div v-if="isModal" class="modal">
-    <button @click="closeModal" class="close">X</button>
-    <form action="" class="form" v-on:submit.prevent="registerAuthor">
-      <label for="name">Nome:</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Uncle Bob"
-        required
-        v-model="authorData.name"
-      />
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="unclebob@email.com"
-        required
-        v-model="authorData.email"
-      />
-      <label for="github">Github:</label>
-      <input
-        type="text"
-        name="github"
-        id="github"
-        placeholder="uncle-bob"
-        required
-        v-model="authorData.github"
-      />
-      <label for="twitter">Twitter:</label>
-      <input
-        type="text"
-        name="twitter"
-        id="twitter"
-        placeholder="@unclebob"
-        required
-        v-model="authorData.twitter"
-      />
-      <label for="location">Localização:</label>
-      <input
-        type="text"
-        name="location"
-        id="location"
-        placeholder="São Francisco"
-        required
-        v-model="authorData.location"
-      />
-      <label for="last-article">Último artigo</label>
-      <input
-        type="text"
-        name="last-article"
-        id="last-article"
-        placeholder="Clean Code"
-        required
-        v-model="authorData.latest_article_published"
-      />
-      <Button
-        text="Cadastrar autor"
-        height="50px"
-        maxWidth="500px"
-        backgroundColor="#6699cc"
-      />
-    </form>
-  </div>
+  <transition
+    enter-active-class="animate__animated animate__tada"
+    leave-active-class="animate__animated animate__bounceOutRight"
+  >
+    <div v-if="isModal" class="modal">
+      <button @click="closeModal" class="close">X</button>
+      <form action="" class="form" v-on:submit.prevent="registerAuthor">
+        <label for="name">Nome:</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Uncle Bob"
+          required
+          v-model="authorData.name"
+        />
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="unclebob@email.com"
+          required
+          v-model="authorData.email"
+        />
+        <label for="github">Github:</label>
+        <input
+          type="text"
+          name="github"
+          id="github"
+          placeholder="uncle-bob"
+          required
+          v-model="authorData.github"
+        />
+        <label for="twitter">Twitter:</label>
+        <input
+          type="text"
+          name="twitter"
+          id="twitter"
+          placeholder="@unclebob"
+          required
+          v-model="authorData.twitter"
+        />
+        <label for="location">Localização:</label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          placeholder="São Francisco"
+          required
+          v-model="authorData.location"
+        />
+        <label for="last-article">Último artigo</label>
+        <input
+          type="text"
+          name="last-article"
+          id="last-article"
+          placeholder="Clean Code"
+          required
+          v-model="authorData.latest_article_published"
+        />
+        <Button
+          text="Cadastrar autor"
+          height="50px"
+          maxWidth="500px"
+          backgroundColor="#6699cc"
+        />
+      </form>
+    </div>
+  </transition>
 </template>
 
 <script>
