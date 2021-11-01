@@ -1,7 +1,7 @@
 <template>
   <transition
-    enter-active-class="animate__animated animate__tada"
-    leave-active-class="animate__animated animate__bounceOutRight"
+    enter-active-class="animate__animated animate__fadeInRight"
+    leave-active-class="animate__animated animate__fadeOutRight"
   >
     <div v-if="isModal" class="modal">
       <button @click="closeModal" class="close">X</button>
