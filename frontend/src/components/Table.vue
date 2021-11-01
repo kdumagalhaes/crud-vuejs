@@ -74,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    padding: 0 80px;
+  padding: 0 80px;
 }
 
 .table {
@@ -87,14 +87,20 @@ export default {
 
 td,
 th {
-  text-align: left;
   color: $dark-gray;
   padding: 10px 0;
+  text-align: left;
 }
 
 td {
   &:first-child {
     padding-left: 10px;
+  }
+}
+
+th {
+  &:last-child {
+    text-align: center;
   }
 }
 
