@@ -1,7 +1,7 @@
 <template>
   <div v-if="isModal" class="modal">
     <button @click="closeModal" class="close">X</button>
-    <form action="" class="form">
+    <form action="" class="form" v-on:submit.prevent="registerAuthor">
       <label for="name">Nome:</label>
       <input
         type="text"
@@ -9,7 +9,7 @@
         id="name"
         placeholder="Uncle Bob"
         required
-        autofocus
+        v-model="authorData.name"
       />
       <label for="email">Email:</label>
       <input
@@ -18,6 +18,7 @@
         id="email"
         placeholder="unclebob@email.com"
         required
+        v-model="authorData.email"
       />
       <label for="github">Github:</label>
       <input
@@ -26,6 +27,7 @@
         id="github"
         placeholder="uncle-bob"
         required
+        v-model="authorData.github"
       />
       <label for="twitter">Twitter:</label>
       <input
@@ -34,14 +36,16 @@
         id="twitter"
         placeholder="@unclebob"
         required
+        v-model="authorData.twitter"
       />
-      <label for="localization">Localização:</label>
+      <label for="location">Localização:</label>
       <input
         type="text"
-        name="localization"
-        id="localization"
+        name="location"
+        id="location"
         placeholder="São Francisco"
         required
+        v-model="authorData.location"
       />
       <label for="last-article">Último artigo</label>
       <input
@@ -50,6 +54,7 @@
         id="last-article"
         placeholder="Clean Code"
         required
+        v-model="authorData.latest_article_published"
       />
       <Button
         text="Cadastrar autor"
@@ -67,12 +72,37 @@ import Button from "./Button.vue";
 
 export default {
   name: "Modal",
+  data() {
+    return {
+      authorData: {
+        name: null,
+        email: null,
+        github: null,
+        twitter: null,
+        location: null,
+        latest_article_published: null,
+      },
+    };
+  },
   components: {
     Button,
   },
   methods: {
     closeModal() {
       this.$store.dispatch("closeModal");
+    },
+    registerAuthor() {
+      try {
+        fetch("http://localhost:8000/api/authors", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(this.authorData),
+        });
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   computed: {

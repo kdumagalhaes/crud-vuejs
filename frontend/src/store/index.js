@@ -10,7 +10,7 @@ export default createStore({
         },
         CLOSE_MODAL(state) {
             state.isModal = false
-        }
+        },
     },
     actions: {
         showModal({ commit }) {
@@ -18,7 +18,7 @@ export default createStore({
         },
         closeModal({ commit }) {
             commit('CLOSE_MODAL')
-        }
+        },
     },
     getters: {
         showModal(state) {
