@@ -70,7 +70,7 @@ export default {
       try {
         fetch(`http://localhost:8000/api/authors/${id}`, {
           method: "DELETE",
-        });
+        }).then(() => this.listAllAuthors());
       } catch (error) {
         console.log(error);
       }
