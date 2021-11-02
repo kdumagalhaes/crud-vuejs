@@ -150,7 +150,8 @@ th {
   text-align: left;
 }
 
-td {
+td,
+th {
   &:first-child {
     padding-left: 10px;
   }
