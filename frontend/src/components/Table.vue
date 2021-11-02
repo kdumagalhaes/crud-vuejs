@@ -14,31 +14,63 @@
         <th>Ações</th>
       </tr>
       <tr v-for="author in authors" :key="author.id">
-        <td contenteditable="true" v-bind="authorData.name" class="name">
-          {{ author.name }}
+        <td contenteditable="true" class="name">
+          <input
+            name="name"
+            id="name"
+            type="text"
+            v-bind="authorData.name"
+            v-model="author.name"
+          />
         </td>
-        <td contenteditable="true" v-bind="authorData.email" class="email">
-          {{ author.email }}
+        <td contenteditable="true" class="email">
+          <input
+            name="email"
+            id="email"
+            type="email"
+            v-bind="authorData.email"
+            v-model="author.email"
+          />
         </td>
-        <td contenteditable="true" v-bind="authorData.github" class="github">
-          {{ author.github }}
+        <td contenteditable="true" class="github">
+          <input
+            name="github"
+            id="github"
+            type="text"
+            v-bind="authorData.github"
+            v-model="author.github"
+          />
         </td>
-        <td contenteditable="true" v-bind="authorData.twitter" class="twitter">
-          {{ author.twitter }}
+        <td contenteditable="true" class="twitter">
+          <input
+            name="twitter"
+            id="twitter"
+            type="text"
+            v-bind="authorData.twitter"
+            v-model="author.twitter"
+          />
         </td>
-        <td
-          contenteditable="true"
-          v-bind="authorData.location"
-          class="location"
-        >
-          {{ author.location }}
+        <td contenteditable="true" class="location">
+          <input
+            name="location"
+            id="location"
+            type="text"
+            v-bind="authorData.location"
+            v-model="author.location"
+          />
         </td>
         <td
           contenteditable="true"
           v-bind="authorData.latest_article_published"
           class="latest-article"
         >
-          {{ author.latest_article_published }}
+          <input
+            name="latest-article"
+            id="latest-article"
+            type="text"
+            v-bind="authorData.latest_article_published"
+            v-model="author.latest_article_published"
+          />
         </td>
         <td class="action-column">
           <Button
