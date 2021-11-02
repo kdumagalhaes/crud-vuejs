@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <h3 v-if="showWarning" class="warning">Ainda não há autores cadastrados.</h3>
+    <h3 v-if="showWarning" class="warning">
+      Ainda não há autores cadastrados.
+    </h3>
     <table v-if="showTable" class="table">
       <tr>
         <th>Nome</th>
@@ -81,11 +83,11 @@ export default {
         const response = await fetch("http://localhost:8000/api/authors");
         this.authors = await response.json();
         if (this.authors.length === 0) {
-          this.showWarning = true
-          this.showTable = false
+          this.showWarning = true;
+          this.showTable = false;
         } else {
-          this.showWarning = false
-          this.showTable = true
+          this.showWarning = false;
+          this.showTable = true;
         }
       } catch (error) {
         console.error(error);
@@ -101,13 +103,17 @@ export default {
       }
     },
     editAuthor(id) {
-      fetch(`http://localhost:8000/api/authors/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify(this.authorData),
-      });
+      try {
+        fetch(`http://localhost:8000/api/authors/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(this.authorData),
+        });
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   created() {
