@@ -4,7 +4,7 @@
     leave-active-class="animate__animated animate__fadeOutRight"
   >
     <div v-if="isModal" class="modal">
-      <button @click="closeModal" class="close">X</button>
+      <button @click="closeModal" class="close">X Fechar</button>
       <form action="" class="form" v-on:submit.prevent="registerAuthor">
         <label for="name">Nome:</label>
         <input
@@ -13,7 +13,6 @@
           id="name"
           placeholder="Uncle Bob"
           required
-          v-model="authorData.name"
           autocomplete="off"
         />
         <label for="email">Email:</label>
@@ -23,7 +22,6 @@
           id="email"
           placeholder="unclebob@email.com"
           required
-          v-model="authorData.email"
           autocomplete="off"
         />
         <label for="github">Github:</label>
@@ -33,7 +31,6 @@
           id="github"
           placeholder="uncle-bob"
           required
-          v-model="authorData.github"
           autocomplete="off"
         />
         <label for="twitter">Twitter:</label>
@@ -43,7 +40,6 @@
           id="twitter"
           placeholder="@unclebob"
           required
-          v-model="authorData.twitter"
           autocomplete="off"
         />
         <label for="location">Localização:</label>
@@ -53,7 +49,6 @@
           id="location"
           placeholder="São Francisco"
           required
-          v-model="authorData.location"
           autocomplete="off"
         />
         <label for="last-article">Último artigo</label>
@@ -63,7 +58,6 @@
           id="last-article"
           placeholder="Clean Code"
           required
-          v-model="authorData.latest_article_published"
           autocomplete="off"
         />
         <Button
@@ -71,6 +65,7 @@
           height="50px"
           maxWidth="500px"
           backgroundColor="#6699cc"
+          class="register-btn"
         />
       </form>
     </div>
@@ -142,7 +137,7 @@ export default {
   right: 0;
   top: 0;
   box-shadow: -11px 0px 15px -6px rgba(71, 71, 71, 0.35);
-  padding: 10px;
+  padding: 20px;
 }
 
 .close {
@@ -153,6 +148,11 @@ export default {
   padding: 5px;
   background-color: $error-red;
   margin-bottom: 30px;
+  transition: background-color 0.6s;
+
+  &:hover {
+    background-color: #a50000;
+  }
 }
 
 .form {
@@ -160,7 +160,7 @@ export default {
   flex-direction: column;
 
   label {
-    margin-bottom: 5px;
+    margin: 0 0 5px 5px;
     font-weight: $bold;
     color: $dark-gray;
   }
@@ -170,6 +170,11 @@ export default {
     margin-bottom: 15px;
     padding-left: 10px;
     border: 1px solid $primary-gray;
+    border-radius: 5px;
   }
+}
+
+.register-btn {
+  margin-top: 20px;
 }
 </style>
