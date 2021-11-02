@@ -14,6 +14,7 @@
           placeholder="Uncle Bob"
           required
           v-model="authorData.name"
+          autocomplete="off"
         />
         <label for="email">Email:</label>
         <input
@@ -23,6 +24,7 @@
           placeholder="unclebob@email.com"
           required
           v-model="authorData.email"
+          autocomplete="off"
         />
         <label for="github">Github:</label>
         <input
@@ -32,6 +34,7 @@
           placeholder="uncle-bob"
           required
           v-model="authorData.github"
+          autocomplete="off"
         />
         <label for="twitter">Twitter:</label>
         <input
@@ -41,6 +44,7 @@
           placeholder="@unclebob"
           required
           v-model="authorData.twitter"
+          autocomplete="off"
         />
         <label for="location">Localização:</label>
         <input
@@ -50,6 +54,7 @@
           placeholder="São Francisco"
           required
           v-model="authorData.location"
+          autocomplete="off"
         />
         <label for="last-article">Último artigo</label>
         <input
@@ -59,6 +64,7 @@
           placeholder="Clean Code"
           required
           v-model="authorData.latest_article_published"
+          autocomplete="off"
         />
         <Button
           text="Cadastrar autor"
@@ -96,6 +102,15 @@ export default {
     closeModal() {
       this.$store.dispatch("closeModal");
     },
+    async listAllAuthors() {
+      try {
+        const response = await fetch("http://localhost:8000/api/authors");
+        this.authors = await response.json();
+        console.log("busquei e retornei");
+      } catch (error) {
+        console.error(error);
+      }
+    },
     registerAuthor() {
       try {
         fetch("http://localhost:8000/api/authors", {
@@ -104,7 +119,7 @@ export default {
             "Content-type": "application/json; charset=UTF-8",
           },
           body: JSON.stringify(this.authorData),
-        });
+        }).then(() => location.reload());
       } catch (error) {
         console.error(error);
       }
