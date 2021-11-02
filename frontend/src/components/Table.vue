@@ -80,10 +80,12 @@ export default {
       try {
         const response = await fetch("http://localhost:8000/api/authors");
         this.authors = await response.json();
-        console.log(this.authors)
         if (this.authors.length === 0) {
           this.showWarning = true
           this.showTable = false
+        } else {
+          this.showWarning = false
+          this.showTable = true
         }
       } catch (error) {
         console.error(error);
@@ -153,5 +155,11 @@ tr:nth-child(even) {
 .action-column {
   display: flex;
   justify-content: space-evenly;
+}
+
+.warning {
+  text-align: center;
+  margin-top: 120px;
+  color: $dark-gray;
 }
 </style>

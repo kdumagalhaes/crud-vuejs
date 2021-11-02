@@ -13,7 +13,7 @@
           id="name"
           placeholder="Uncle Bob"
           required
-          autocomplete="off"
+          v-model="authorData.name"
         />
         <label for="email">Email:</label>
         <input
@@ -22,7 +22,7 @@
           id="email"
           placeholder="unclebob@email.com"
           required
-          autocomplete="off"
+          v-model="authorData.email"
         />
         <label for="github">Github:</label>
         <input
@@ -31,7 +31,7 @@
           id="github"
           placeholder="uncle-bob"
           required
-          autocomplete="off"
+          v-model="authorData.github"
         />
         <label for="twitter">Twitter:</label>
         <input
@@ -40,7 +40,7 @@
           id="twitter"
           placeholder="@unclebob"
           required
-          autocomplete="off"
+          v-model="authorData.twitter"
         />
         <label for="location">Localização:</label>
         <input
@@ -49,16 +49,16 @@
           id="location"
           placeholder="São Francisco"
           required
-          autocomplete="off"
+          v-model="authorData.location"
         />
-        <label for="last-article">Último artigo</label>
+        <label for="latest_article_published">Último artigo</label>
         <input
           type="text"
-          name="last-article"
-          id="last-article"
+          name="latest_article_published"
+          id="latest_article_published"
           placeholder="Clean Code"
           required
-          autocomplete="off"
+          v-model="authorData.latest_article_published"
         />
         <Button
           text="Cadastrar autor"
@@ -114,7 +114,8 @@ export default {
             "Content-type": "application/json; charset=UTF-8",
           },
           body: JSON.stringify(this.authorData),
-        }).then(() => location.reload());
+        })
+        .then(() => location.reload());
       } catch (error) {
         console.error(error);
       }
