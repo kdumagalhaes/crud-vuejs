@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <h3 v-if="showWarning" class="warning">Ainda não há autores cadastrados.</h3>
+    <h3 v-if="showWarning" class="warning">
+      Ainda não há autores cadastrados.
+    </h3>
     <table v-if="showTable" class="table">
       <tr>
         <th>Nome</th>
@@ -12,22 +14,30 @@
         <th>Ações</th>
       </tr>
       <tr v-for="author in authors" :key="author.id">
-        <td contenteditable="true" v-bind="authorData.name">
+        <td contenteditable="true" v-bind="authorData.name" class="name">
           {{ author.name }}
         </td>
-        <td contenteditable="true" v-bind="authorData.email">
+        <td contenteditable="true" v-bind="authorData.email" class="email">
           {{ author.email }}
         </td>
-        <td contenteditable="true" v-bind="authorData.github">
+        <td contenteditable="true" v-bind="authorData.github" class="github">
           {{ author.github }}
         </td>
-        <td contenteditable="true" v-bind="authorData.twitter">
+        <td contenteditable="true" v-bind="authorData.twitter" class="twitter">
           {{ author.twitter }}
         </td>
-        <td contenteditable="true" v-bind="authorData.location">
+        <td
+          contenteditable="true"
+          v-bind="authorData.location"
+          class="location"
+        >
           {{ author.location }}
         </td>
-        <td contenteditable="true" v-bind="authorData.latest_article_published">
+        <td
+          contenteditable="true"
+          v-bind="authorData.latest_article_published"
+          class="latest-article"
+        >
           {{ author.latest_article_published }}
         </td>
         <td class="action-column">
@@ -80,10 +90,12 @@ export default {
       try {
         const response = await fetch("http://localhost:8000/api/authors");
         this.authors = await response.json();
-        console.log(this.authors)
         if (this.authors.length === 0) {
-          this.showWarning = true
-          this.showTable = false
+          this.showWarning = true;
+          this.showTable = false;
+        } else {
+          this.showWarning = false;
+          this.showTable = true;
         }
       } catch (error) {
         console.error(error);
@@ -99,13 +111,17 @@ export default {
       }
     },
     editAuthor(id) {
-      fetch(`http://localhost:8000/api/authors/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify(this.authorData),
-      });
+      try {
+        fetch(`http://localhost:8000/api/authors/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(this.authorData),
+        });
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   created() {
@@ -134,7 +150,8 @@ th {
   text-align: left;
 }
 
-td {
+td,
+th {
   &:first-child {
     padding-left: 10px;
   }
@@ -153,5 +170,23 @@ tr:nth-child(even) {
 .action-column {
   display: flex;
   justify-content: space-evenly;
+}
+
+.warning {
+  text-align: center;
+  margin-top: 120px;
+  color: $dark-gray;
+}
+
+.email {
+  max-width: 160px;
+}
+
+.name,
+.location,
+.latest-article,
+.github,
+.twitter {
+  max-width: 100px;
 }
 </style>
