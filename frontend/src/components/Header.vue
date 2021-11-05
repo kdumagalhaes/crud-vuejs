@@ -1,28 +1,18 @@
 <template>
   <header class="header">
     <h1 class="logo">Controle de autores</h1>
-    <Button
-      text="+ Adicionar autor"
-      backgroundColor="#6699cc"
-      height="50px"
-      maxWidth="200px"
-      @click="showModal"
-    />
+    <Search />
   </header>
 </template>
 
 <script>
 // components
-import Button from "./Button.vue";
+import Search from "./Search.vue"
+
 export default {
   name: "Header",
   components: {
-    Button,
-  },
-  methods: {
-    showModal() {
-      this.$store.dispatch('showModal')
-    }
+    Search,
   }
 };
 </script>
