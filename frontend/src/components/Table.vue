@@ -14,62 +14,64 @@
         <th>Ações</th>
       </tr>
       <tr v-for="author in authors" :key="author.id">
-        <td contenteditable="true" class="name">
+        <td class="name">
+          {{ author.name }}
           <input
             name="name"
             id="name"
             type="text"
-            v-bind="authorData.name"
             v-model="author.name"
+            :key="authorData.id"
           />
         </td>
-        <td contenteditable="true" class="email">
+        <td class="email">
+          {{ author.email }}
           <input
             name="email"
             id="email"
             type="email"
-            v-bind="authorData.email"
-            v-model="author.email"
+            v-model="authorData.email"
+            :key="author.id"
           />
         </td>
-        <td contenteditable="true" class="github">
+        <td class="github">
+          {{ author.github }}
           <input
             name="github"
             id="github"
             type="text"
-            v-bind="authorData.github"
-            v-model="author.github"
+            v-model="authorData.github"
+            :key="author.id"
           />
         </td>
-        <td contenteditable="true" class="twitter">
+        <td class="twitter">
+          {{ author.twitter }}
           <input
             name="twitter"
             id="twitter"
             type="text"
-            v-bind="authorData.twitter"
-            v-model="author.twitter"
+            v-model="authorData.twitter"
+            :key="author.id"
           />
         </td>
-        <td contenteditable="true" class="location">
+        <td class="location">
+          {{ author.location }}
           <input
             name="location"
             id="location"
             type="text"
-            v-bind="authorData.location"
-            v-model="author.location"
+            v-model="authorData.location"
+            :key="author.id"
           />
         </td>
-        <td
-          contenteditable="true"
-          v-bind="authorData.latest_article_published"
-          class="latest-article"
-        >
+        <td v-bind="authorData.latest_article_published" class="latest-article">
+          {{ author.latest_article_published }}
           <input
             name="latest-article"
             id="latest-article"
             type="text"
-            v-bind="authorData.latest_article_published"
-            v-model="author.latest_article_published"
+            v-model="authorData.latest_article_published"
+            :key="author.id"
           />
         </td>
         <td class="action-column">
@@ -101,16 +103,16 @@ export default {
   name: "Table",
   data() {
     return {
-      authors: "",
+      authors: [],
       showWarning: false,
       showTable: true,
       authorData: {
-        name: "",
-        email: "",
-        github: "",
-        twitter: "",
-        location: "",
-        latest_article_published: "",
+        name: null,
+        email: null,
+        github: null,
+        twitter: null,
+        location: null,
+        latest_article_published: null,
       },
     };
   },
@@ -146,11 +148,13 @@ export default {
       try {
         fetch(`http://localhost:8000/api/authors/${id}`, {
           method: "PUT",
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-          body: JSON.stringify(this.authorData),
-        });
+          body: JSON.stringify(this.author),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            console.log(this.authorData)
+          });
       } catch (error) {
         console.error(error);
       }
