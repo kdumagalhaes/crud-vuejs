@@ -1,25 +1,23 @@
 <template>
   <div class="app">
     <Header />
-    <Table />
-    <Modal />
+    <Form />
   </div>
 </template>
 
 <script>
 // components
 import Header from "./components/Header.vue";
-import Table from "./components/Table.vue";
-import Modal from "./components/Modal.vue";
+import Form from "./components/Form.vue";
 
 export default {
   name: "App",
   components: {
     Header,
-    Table,
-    Modal,
+    Form,
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>
