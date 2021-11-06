@@ -58,22 +58,15 @@
       <Button
         text="Cadastrar"
         height="50px"
-        maxWidth="130px"
+        maxWidth="200px"
         backgroundColor="#6699cc"
         class="register-btn"
       />
       <Button
-        text="Editar"
+        text="Atualizar"
         height="50px"
-        maxWidth="130px"
+        maxWidth="200px"
         backgroundColor="#b8a200"
-        class="register-btn"
-      />
-      <Button
-        text="Remover"
-        height="50px"
-        maxWidth="130px"
-        backgroundColor="#ff0000"
         class="register-btn"
       />
     </div>
@@ -123,11 +116,6 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    },
-  },
-  computed: {
-    isModal() {
-      return this.$store.state.isModal;
     },
   },
 };
